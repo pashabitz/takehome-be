@@ -68,20 +68,61 @@ Provide a link to the source so we can see the original work and any modificatio
 
 
 # Your Notes
-*TODO: Add your documentation here* 
+I do not have experience with Django so the majority of time was spent learning how to use Django features 
+to achieve the requirements.
+
+```
+python listings/manage.py import_house_data
+```
+Just loads all the records in all files under `sample-data` into one "houses" table.
+One header line per file is assumed.
+
+To run the API server:
+```
+python listings/manage.py runserver
+```
+
+To list all properties:
+```
+http://127.0.0.1:8000/api/houses/
+```
+
+To query with filters:
+```
+http://127.0.0.1:8000/api/houses/query/
+```
+
+You can append any number of query string parameters, e.g.
+```
+http://127.0.0.1:8000/api/houses/query/?bathrooms__gte=3&bedrooms=5&year_built__gte=2000
+```
+
+Logic:
+- AND between fields
+
+Currently, only the following columns are supported
+- bathrooms
+- bedrooms
+- year_built
+
+gte/lte operators can be appended.
+
+Just float values are supported for now.
+
+The fileds are configurable in views.py.
+
 
 ## Time Spent
-*Give us a rough estimate of the time you spent working on this. If you spent time learning in order to do this project please feel free to let us know that too.*
-*This makes sure that we are evaluating your work fairly and in context. It also gives us the opportunity to learn and adjust our process if needed.*
+2.5 hours, mostly figuring out Django.
 
 ## Assumptions
-*Did you find yourself needing to make assumptions to finish this?*
-*If so, what were they and how did they impact your design/code?*
-
+- One header line per data file is assumed.
+- Float values for filtering only (easy to extend)
 
 ## Next Steps
-*Provide us with some notes about what you would do next if you had more time.* 
-*Are there additional features that you would want to add? Specific improvements to your code you would make?*
+- Support other kinds of filters
+- Extract query logic to a more self-contained class to enable clean unit testing
+
 ### Features
 
 ### Testing
