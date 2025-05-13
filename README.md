@@ -121,7 +121,8 @@ The fileds are configurable in views.py.
 
 ## Next Steps
 - Support other kinds of filters
-- Extract query logic to a more self-contained class to enable clean unit testing
+- Extract query logic to a more self-contained class to enable clean unit testing; learn about Django any testing features
+- Support header (bool) and specific file names / paths arguments in the import_house_data command
 
 ### Features
 

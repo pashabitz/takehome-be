@@ -38,10 +38,10 @@ class House(models.Model):
         $1.93M
         """
         price_str = price_str.replace('$', '').replace(',', '')
-        if 'K' in price_str:
-            return float(price_str.replace('K', '')) * 1000
-        elif 'M' in price_str:
-            return float(price_str.replace('M', '')) * 1000000
+        if price_str.endswith('K'):
+            return float(price_str[:-1]) * 1000
+        elif price_str.endswith('M'):
+            return float(price_str[:-1]) * 1000000
         else:
             return float(price_str)
 

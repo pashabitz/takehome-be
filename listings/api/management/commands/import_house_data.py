@@ -27,7 +27,6 @@ class Command(BaseCommand):
         for filename in os.listdir(self.data_path):
             data = self.process_one_csv_file(filename)
             for line in data:
-                # print(line)
                 try:
                     house = House.from_csv_line(line)
                     house.save()
